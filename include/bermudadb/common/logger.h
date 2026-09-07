@@ -40,7 +40,7 @@ namespace bermudadb {
         static inline const std::string ERROR = "  Error";
         static inline const std::string DEBUG = "  Debug";
 
-        static std::mutex s_Mutex;
+        static inline std::mutex s_Mutex;
 
         /// @brief Writes a message with the with a log type and timestamp to the logfile.
         /// @param logTypeString - Represents the type of log this is.
