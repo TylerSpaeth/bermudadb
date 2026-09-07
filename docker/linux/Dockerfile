@@ -3,9 +3,14 @@ FROM ubuntu:24.04
 RUN apt-get update && \
 		apt-get install -y \
 				build-essential \
+                gcc-14 \
+                g++-14 \
 				cmake  \
 				ninja-build \
 		&& rm  -rf /var/lib/apt/lists/*
+
+ENV CC=gcc-14
+ENV CXX=g++-14
 
 WORKDIR /workspace
 

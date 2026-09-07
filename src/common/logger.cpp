@@ -1,0 +1,53 @@
+#include <chrono>
+#include <cstring>
+#include <bermudadb/common/logger.h>
+
+#include <iostream>
+#include <print>
+
+namespace bermudadb {
+
+    Logger::Logger(const char* filepath) {
+        m_LogFile = fopen(filepath, "w");
+        if (!m_LogFile) {
+            std::println(stderr,
+             "Failed to open log file for writing: [{}] {}",
+             filepath ? filepath : "null",
+             std::strerror(errno));
+            m_LogFile = stdout;
+        }
+    }
+
+    Logger::~Logger() {
+        if (m_LogFile && m_LogFile != stdout) {
+            fclose(m_LogFile);
+        }
+    }
+
+    void Logger::Info(const std::string& message) const {
+        WriteLog(INFO, message);
+    }
+    void Logger::Warning(const std::string& message) const {
+        WriteLog(WARNING, message);
+    }
+    void Logger::Error(const std::string& message) const {
+        WriteLog(ERROR, message);
+    }
+    void Logger::Debug(const std::string& message) const {
+        WriteLog(DEBUG, message);
+    }
+
+    void Logger::WriteLog(const std::string& logTypeString, const std::string& message) const {
+        std::lock_guard<std::mutex> lock(s_Mutex);
+
+        auto timestamp = std::chrono::system_clock::now();
+        std::println(m_LogFile, "{:%Y-%m-%d %H:%M:%S} {} : {}", timestamp, logTypeString, message);
+        fflush(m_LogFile);
+
+
+        if (m_LogFile != stdout) {
+            std::println(stdout, "Logged to file: {:%Y-%m-%d %H:%M:%S} {} : {}", timestamp, logTypeString, message);
+        }
+    }
+
+}
