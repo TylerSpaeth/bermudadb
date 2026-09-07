@@ -24,20 +24,20 @@ namespace bermudadb {
         }
     }
 
-    void Logger::Info(const std::string& message) const {
-        WriteLog(INFO, message);
+    void Logger::info(const std::string& message) const {
+        write_log(INFO, message);
     }
-    void Logger::Warning(const std::string& message) const {
-        WriteLog(WARNING, message);
+    void Logger::warning(const std::string& message) const {
+        write_log(WARNING, message);
     }
-    void Logger::Error(const std::string& message) const {
-        WriteLog(ERROR, message);
+    void Logger::error(const std::string& message) const {
+        write_log(ERROR, message);
     }
-    void Logger::Debug(const std::string& message) const {
-        WriteLog(DEBUG, message);
+    void Logger::debug(const std::string& message) const {
+        write_log(DEBUG, message);
     }
 
-    void Logger::WriteLog(const std::string& logTypeString, const std::string& message) const {
+    void Logger::write_log(const std::string& logTypeString, const std::string& message) const {
         std::lock_guard<std::mutex> lock(s_Mutex);
 
         auto timestamp = std::chrono::system_clock::now();

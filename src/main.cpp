@@ -2,6 +2,6 @@
 
 int main() {
 	bermudadb::Logger logger(nullptr);
-	logger.Info("Application started");
+	logger.info("Application started");
 	return 0;
 }

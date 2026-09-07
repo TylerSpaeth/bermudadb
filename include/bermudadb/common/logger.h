@@ -18,19 +18,19 @@ namespace bermudadb {
 
         /// @brief Writes a log at the debug level.
         /// @param message - The message to log
-        void Info(const std::string& message) const;
+        void info(const std::string& message) const;
 
         /// @brief Writes a log at the warning level.
         /// @param message - The message to log
-        void Warning(const std::string& message) const;
+        void warning(const std::string& message) const;
 
         /// @brief Writes a log at the error level.
         /// @param message - The message to log
-        void Error(const std::string& message) const;
+        void error(const std::string& message) const;
 
         /// @brief Writes a log at the debug level.
         /// @param message - The message to log
-        void Debug(const std::string& message) const;
+        void debug(const std::string& message) const;
 
     private:
 
@@ -45,7 +45,7 @@ namespace bermudadb {
         /// @brief Writes a message with the with a log type and timestamp to the logfile.
         /// @param logTypeString - Represents the type of log this is.
         /// @param message - The actual message of the log
-        void WriteLog(const std::string& logTypeString, const std::string& message) const;
+        void write_log(const std::string& logTypeString, const std::string& message) const;
 
     };
 
