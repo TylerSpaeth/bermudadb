@@ -1,0 +1,6 @@
+services:
+  linux:
+    build:
+      context: .
+      dockerfile: docker/linux/Dockerfile
+    image: bermudadb-linux
