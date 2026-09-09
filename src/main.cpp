@@ -1,4 +1,4 @@
-#include <bermudadb/common/logger.h>
+#include <bermudadb/common/logger.hpp>
 
 int main() {
 	bermudadb::Logger logger(nullptr);

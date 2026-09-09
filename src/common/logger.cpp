@@ -1,6 +1,6 @@
 #include <chrono>
 #include <cstring>
-#include <bermudadb/common/logger.h>
+#include <bermudadb/common/logger.hpp>
 
 #include <iostream>
 #include <print>

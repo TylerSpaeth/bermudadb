@@ -18,6 +18,7 @@ add_executable(bermudadb
 add_library(bermudadb_core
 		STATIC
 		src/common/logger.cpp
+		src/storage/DiskManager.cpp
 )
 
 target_include_directories(bermudadb_core
@@ -38,7 +39,10 @@ set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 FetchContent_MakeAvailable(googletest)
 add_executable(bermudadb_tests
 	tests/main.cpp
+		tests/storage/DiskManagerTests.cpp
 )
-target_link_libraries(bermudadb_tests PRIVATE GTest::gtest_main)
+target_link_libraries(bermudadb_tests PRIVATE
+		GTest::gtest_main
+		bermudadb_core)
 include(GoogleTest)
 gtest_discover_tests(bermudadb_tests)
