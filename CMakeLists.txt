@@ -11,14 +11,14 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 add_executable(bermudadb 
 	src/main.cpp
-		src/common/logger.cpp
 )
 
 #Core library
 add_library(bermudadb_core
 		STATIC
-		src/common/logger.cpp
+		src/common/Logger.cpp
 		src/storage/DiskManager.cpp
+		src/storage/BufferPoolManager.cpp
 )
 
 target_include_directories(bermudadb_core
@@ -40,6 +40,7 @@ FetchContent_MakeAvailable(googletest)
 add_executable(bermudadb_tests
 	tests/main.cpp
 		tests/storage/DiskManagerTests.cpp
+		tests/storage/BufferPoolManagerTests.cpp
 )
 target_link_libraries(bermudadb_tests PRIVATE
 		GTest::gtest_main

@@ -4,6 +4,8 @@
 
 namespace bermudadb {
 
+    using PageId = uint64_t;
+
     constexpr std::size_t PAGE_SIZE = 4096;
 
     struct Page {
